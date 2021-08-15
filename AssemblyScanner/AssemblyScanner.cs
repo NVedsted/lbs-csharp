@@ -46,7 +46,7 @@ namespace LBS.AssemblyScanner
                 {
                     if (i.Operand is MethodReference r)
                     {
-                        if (!this.AllowedSymbols.IsAllowed(r))
+                        if (r.Module != method.Module && !this.AllowedSymbols.IsAllowed(r))
                         {
                             throw new Exception($"Not an allowed symbol: {r}");
                         }
